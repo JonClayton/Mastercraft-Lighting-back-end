@@ -6,7 +6,7 @@ gem 'pg'
 gem 'pry-rails'
 gem 'rack-cors'
 
-
+gem 'jsonapi-resources'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
