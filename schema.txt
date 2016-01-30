@@ -1,0 +1,265 @@
+CREATE TABLE `CSV_input` (
+  `CSV_input_id` INT NOT NULL AUTO_INCREMENT,
+  `Name` varchar,
+  `Device Type` varchar,
+  `Instrument Type` varchar,
+  `Wattage` varchar,
+  `Purpose` varchar,
+  `Position` varchar,
+  `Unit Number` varchar,
+  `Color` varchar,
+  `Dimmer` varchar,
+  `Channel` varchar,
+  `Address` varchar,
+  `Universe` varchar,
+  `U Address` varchar,
+  `Circuit Number` varchar,
+  `Circuit Name` varchar,
+  `System` varchar,
+  `User Field 1` varchar,
+  `User Field 2` varchar,
+  `User Field 3` varchar,
+  `User Field 4` varchar,
+  `User Field 5` varchar,
+  `User Field 6` varchar,
+  `Num Channels` varchar,
+  `Frame Size` varchar,
+  `Field Angle` varchar,
+  `Field Angle 2` varchar,
+  `Beam Angle` varchar,
+  `Beam Angle 2` varchar,
+  `Weight` varchar,
+  `Gobo 1` varchar,
+  `Gobo 1 Rotation` varchar,
+  `Gobo 2` varchar,
+  `Gobo 2 Rotation` varchar,
+  `Gobo Shift` varchar,
+  `Mark` varchar,
+  `Draw Beam` varchar,
+  `Draw Beam as 3D Solid` varchar,
+  `Use Vertical Beam` varchar,
+  `Show Beam at` varchar,
+  `Falloff Distance` varchar,
+  `Lamp Rotation Angle` varchar,
+  `Top Shutter Depth` varchar,
+  `Top Shutter Angle` varchar,
+  `Left Shutter Depth` varchar,
+  `Left Shutter Angle` varchar,
+  `Right Shutter Depth` varchar,
+  `Right Shutter Angle` varchar,
+  `Bottom Shutter Depth` varchar,
+  `Bottom Shutter Angle` varchar,
+  `Symbol Name` varchar,
+  `Use Legend` varchar,
+  `Flip Front && Back Legend Text` varchar,
+  `Flip Left && Right Legend Text` varchar,
+  `Focus` varchar,
+  `Set 3D Orientation` varchar,
+  `X Rotation` varchar,
+  `Y Rotation` varchar,
+  `X Location` varchar,
+  `Y Location` varchar,
+  `Z Location` varchar,
+  `FixtureID` varchar,
+  `__UID` varchar,
+  `Accessories` varchar,
+  PRIMARY KEY (`CSV_input_id`)
+);
+
+## ************************* YOU ARE HERE *************** ##
+
+CREATE TABLE `CSV_codes` (
+  `CSV_input_id` INT NOT NULL,
+  `__UID` varchar,
+  `FixtureID` varchar
+);
+
+CREATE TABLE `CSV_intrinsic_traits` (
+  `CSV_input_id` INT NOT NULL,
+  `Name` varchar,
+  `Device Type` varchar,
+  `Symbol Name` varchar,
+  `Instrument Type` varchar,
+  `Frame Size` varchar,
+  `Wattage` varchar,
+  `Field Angle` varchar,
+  `Field Angle 2` varchar,
+  `Beam Angle` varchar,
+  `Beam Angle 2` varchar,
+  `Weight` varchar
+);
+
+CREATE TABLE `CSV_physical_location` (
+  `CSV_input_id` INT NOT NULL,
+  `Position` varchar,
+  `Unit Number` varchar
+);
+
+CREATE TABLE `CSV_circuit_info` (
+  `CSV_input_id` INT NOT NULL,
+  `Universe` varchar,
+  `U Address` varchar,
+  `Channel` varchar,
+  `Address` varchar,
+  `Circuit Number` varchar,
+  `Circuit Name` varchar,
+  `System` varchar,
+  `Dimmer` varchar,
+  `Num Channels` varchar
+);
+
+CREATE TABLE `CSV_settings` (
+  `CSV_input_id` INT NOT NULL,
+  `Purpose` varchar,
+  `Color` varchar,
+  `Focus` varchar,
+  `Gobo 1` varchar,
+  `Gobo 1 Rotation` varchar,
+  `Gobo 2` varchar,
+  `Gobo 2 Rotation` varchar,
+  `Gobo Shift` varchar
+);
+
+CREATE TABLE `CSV_user_notes` (
+  `CSV_input_id` INT NOT NULL,
+  `User Field 1` varchar,
+  `User Field 2` varchar,
+  `User Field 3` varchar,
+  `User Field 4` varchar,
+  `User Field 5` varchar,
+  `User Field 6` varchar
+);
+
+CREATE TABLE `CSV_beam_info` (
+  `CSV_input_id` INT NOT NULL,
+  `Draw Beam` varchar,
+  `Draw Beam as 3D Solid` varchar,
+  `Use Vertical Beam` varchar,
+  `Show Beam at` varchar,
+  `Falloff Distance` varchar,
+  `Lamp Rotation Angle` varchar
+);
+
+CREATE TABLE `CSV_shutter_info` (
+  `CSV_input_id` INT NOT NULL,
+  `Top Shutter Depth` varchar,
+  `Top Shutter Angle` varchar,
+  `Left Shutter Depth` varchar,
+  `Left Shutter Angle` varchar,
+  `Right Shutter Depth` varchar,
+  `Right Shutter Angle` varchar,
+  `Bottom Shutter Depth` varchar,
+  `Bottom Shutter Angle` varchar
+);
+
+CREATE TABLE `CSV_orientation_info` (
+  `CSV_input_id` INT NOT NULL,
+  `Set 3D Orientation` varchar,
+  `Flip Front && Back Legend Text` varchar,
+  `Flip Left && Right Legend Text` varchar,
+  `X Rotation` varchar,
+  `Y Rotation` varchar,
+  `X Location` varchar,
+  `Y Location` varchar,
+  `Z Location` varchar
+);
+
+CREATE TABLE `CSV_miscellany` (
+  `CSV_input_id` INT NOT NULL,
+  `Mark` varchar,
+  `Use Legend` varchar
+);
+
+CREATE TABLE `CSV_accessories` (
+  `CSV_input_id` INT NOT NULL,
+  `Accessories` varchar
+);
+
+CREATE TABLE `user` (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `username` varchar NOT NULL,
+  `password` TEXT NOT NULL,
+  `user_type` varchar NOT NULL,
+  PRIMARY KEY (`user_id`)
+);
+
+CREATE TABLE `equipment` (
+  `equipment_id` INT NOT NULL AUTO_INCREMENT,
+  `production_id` INT NOT NULL,
+  `color_id` INT NOT NULL,
+  `device_type_id` INT NOT NULL,
+  PRIMARY KEY (`equipment_id`)
+);
+
+CREATE TABLE `venue` (
+  `venue_id` INT NOT NULL AUTO_INCREMENT,
+  `Name` varchar NOT NULL,
+  `Location` varchar NOT NULL,
+  PRIMARY KEY (`venue_id`)
+);
+
+CREATE TABLE `lead` (
+  `lead_id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `production_id` INT NOT NULL,
+  PRIMARY KEY (`lead_id`)
+);
+
+CREATE TABLE `production` (
+  `production_id` INT NOT NULL,
+  `venue_id` INT NOT NULL,
+  `designer_id` INT NOT NULL,
+  `master_electrician_id` INT NOT NULL,
+  `name` varchar NOT NULL,
+  `date` DATE NOT NULL
+);
+
+CREATE TABLE `color` (
+  `color_id` INT NOT NULL AUTO_INCREMENT,
+  `color_name` varchar NOT NULL,
+  PRIMARY KEY (`color_id`)
+);
+
+CREATE TABLE `device_type` (
+  `device_type_id` bigint NOT NULL AUTO_INCREMENT,
+  `device_name` varchar NOT NULL,
+  PRIMARY KEY (`device_type_id`)
+);
+
+ALTER TABLE `CSV_codes` ADD CONSTRAINT `CSV_codes_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_intrinsic_traits` ADD CONSTRAINT `CSV_intrinsic_traits_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_physical_location` ADD CONSTRAINT `CSV_physical_location_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_circuit_info` ADD CONSTRAINT `CSV_circuit_info_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_settings` ADD CONSTRAINT `CSV_settings_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_user_notes` ADD CONSTRAINT `CSV_user_notes_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_beam_info` ADD CONSTRAINT `CSV_beam_info_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_shutter_info` ADD CONSTRAINT `CSV_shutter_info_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_orientation_info` ADD CONSTRAINT `CSV_orientation_info_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_miscellany` ADD CONSTRAINT `CSV_miscellany_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `CSV_accessories` ADD CONSTRAINT `CSV_accessories_fk0` FOREIGN KEY (`CSV_input_id`) REFERENCES `CSV_input`(`CSV_input_id`);
+
+ALTER TABLE `equipment` ADD CONSTRAINT `equipment_fk0` FOREIGN KEY (`production_id`) REFERENCES `production`(`production_id`);
+
+ALTER TABLE `equipment` ADD CONSTRAINT `equipment_fk1` FOREIGN KEY (`color_id`) REFERENCES `color`(`color_id`);
+
+ALTER TABLE `equipment` ADD CONSTRAINT `equipment_fk2` FOREIGN KEY (`device_type_id`) REFERENCES `device_type`(`device_type_id`);
+
+ALTER TABLE `lead` ADD CONSTRAINT `lead_fk0` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
+
+ALTER TABLE `lead` ADD CONSTRAINT `lead_fk1` FOREIGN KEY (`production_id`) REFERENCES `production`(`production_id`);
+
+ALTER TABLE `production` ADD CONSTRAINT `production_fk0` FOREIGN KEY (`venue_id`) REFERENCES `venue`(`venue_id`);
+
+ALTER TABLE `production` ADD CONSTRAINT `production_fk1` FOREIGN KEY (`designer_id`) REFERENCES `user`(`user_id`);
+
+ALTER TABLE `production` ADD CONSTRAINT `production_fk2` FOREIGN KEY (`master_electrician_id`) REFERENCES `user`(`user_id`);
